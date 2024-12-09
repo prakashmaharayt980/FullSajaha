@@ -1,0 +1,27 @@
+{
+    "rewrites": [
+      {
+        "source": "/api/(.*)", 
+        "destination": "/backend/api/$1"
+      },
+      {
+        "source": "/(.*)",
+        "destination": "/OnlineSajha/$1"
+      }
+    ],
+    "builds": [
+      {
+        "src": "OnlineSajha/package.json",
+        "use": "@vercel/react"
+      },
+      {
+        "src": "backend/wsgi.py",
+        "use": "@vercel/python",
+        "config": {
+          "maxLambdaSize": "15mb",
+          "runtime": "python3.9"
+        }
+      }
+    ]
+  }
+  
